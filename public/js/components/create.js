@@ -43,95 +43,97 @@ class Create extends React.Component {
 	};
 	render() {
 		return (
-				<div className='d-flex row justify-content-center color-light p-4'>
-				<h1 className='ylw-text-color text-center h1-height'>Create New Question</h1>
-					<form  className='btn-width m-0 h1-height' onSubmit={this.handleSubmit}>
-							<div>
-								<label htmlFor='question' className='form-label ylw-text-color'>
-									<strong>Question</strong>{' '}
-								</label>
-								<input
-									required
-									id='question'
-									className='form-control bg-color-dark mb-3'
-									type='text'
-									onChange={this.handleChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor='answer' className='form-label ylw-text-color'>
-									<strong>Answer</strong>{' '}
-								</label>
-								<input
-									required
-									id='answer'
-									className='form-control bg-color-dark mb-3'
-									type='text'
-									onChange={this.handleChange}
-								/>
-							</div>
-						<div>
-							<label className='form-label ylw-text-color' htmlFor='selection1'>
-								Option 1
-							</label>
-							<input
-								required
-								id='selection1'
-								className='form-control bg-color-dark mb-3'
-								type='text'
-								onChange={this.handleChange}
-							/>
-							<label className='form-label ylw-text-color' htmlFor='selection2'>
-								Option 2
-							</label>
-							<input
-								required
-								id='selection2'
-								className='form-control bg-color-dark mb-3'
-								type='text'
-								onChange={this.handleChange}
-							/>
-							<label className='form-label ylw-text-color' htmlFor='selection3'>
-								Option 3
-							</label>
-							<input
-								required
-								id='selection3'
-								className='form-control bg-color-dark mb-3'
-								type='text'
-								onChange={this.handleChange}
-							/>
-							<label className='form-label ylw-text-color' htmlFor='selection4'>
-								Option 4
-							</label>
-							<input
-								required
-								id='selection4'
-								className='form-control bg-color-dark mb-3'
-								type='text'
-								onChange={this.handleChange}
-							/>
+			<div className='d-flex row justify-content-center color-light p-4'>
+				<h1 className='ylw-text-color text-center h1-height'>
+					Create New Question
+				</h1>
+				<form className='btn-width m-0 h1-height' onSubmit={this.handleSubmit}>
+					<div>
+						<label htmlFor='question' className='form-label ylw-text-color'>
+							<strong>Question</strong>{' '}
+						</label>
+						<input
+							required
+							id='question'
+							className='form-control bg-color-dark mb-3'
+							type='text'
+							onChange={this.handleChange}
+						/>
+					</div>
+					<div>
+						<label htmlFor='answer' className='form-label ylw-text-color'>
+							<strong>Answer</strong>{' '}
+						</label>
+						<input
+							required
+							id='answer'
+							className='form-control bg-color-dark mb-3'
+							type='text'
+							onChange={this.handleChange}
+						/>
+					</div>
+					<div>
+						<label className='form-label ylw-text-color' htmlFor='selection1'>
+							Option 1
+						</label>
+						<input
+							required
+							id='selection1'
+							className='form-control bg-color-dark mb-3'
+							type='text'
+							onChange={this.handleChange}
+						/>
+						<label className='form-label ylw-text-color' htmlFor='selection2'>
+							Option 2
+						</label>
+						<input
+							required
+							id='selection2'
+							className='form-control bg-color-dark mb-3'
+							type='text'
+							onChange={this.handleChange}
+						/>
+						<label className='form-label ylw-text-color' htmlFor='selection3'>
+							Option 3
+						</label>
+						<input
+							required
+							id='selection3'
+							className='form-control bg-color-dark mb-3'
+							type='text'
+							onChange={this.handleChange}
+						/>
+						<label className='form-label ylw-text-color' htmlFor='selection4'>
+							Option 4
+						</label>
+						<input
+							required
+							id='selection4'
+							className='form-control bg-color-dark mb-3'
+							type='text'
+							onChange={this.handleChange}
+						/>
+					</div>
+					<div className='d-flex justify-content-center mb-5'>
+						<button
+							onClick={() => this.props.setPage('game')}
+							className='bg-btn-color ylw-text-color px-4 mx-2 py-2 mt-3 mb-5'>
+							Back
+						</button>
+						<input
+							onClick={this.showAlert}
+							className='bg-btn-color ylw-text-color px-4 mx-2 py-2 mt-3 mb-5'
+							type='submit'
+							value='Create'
+						/>
+					</div>
+					{this.state.alert ? (
+						<div className='row grow growOut text-success'>
+							<p>Successfully added!</p>
 						</div>
-						<div className='d-flex justify-content-center'>
-							<button
-								onClick={() => this.props.setPage('game')}
-								className='bg-btn-color ylw-text-color px-4 mx-2 py-2 mt-3 mb-3'>
-								Back
-							</button>
-							<input
-								onClick={this.showAlert}
-								className='bg-btn-color ylw-text-color px-4 mx-2 py-2 mt-3 mb-3'
-								type='submit'
-								value='Create'
-							/>
-						</div>
-						{this.state.alert ? (
-							<div className='row grow growOut text-success'>
-								<p>Successfully added!</p>
-							</div>
-						) : null}
-					</form>
-				</div>
+					) : null}
+				</form>
+			</div>
 		);
 	}
 }
