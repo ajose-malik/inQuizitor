@@ -4,7 +4,7 @@
 	"private": true,
 	"main": "server.js",
 	"engines": {
-		"node": "15.0.1",
+		"node": "14.15.5",
 		"npm": "7.0.3"
 	},
 	"dependencies": {
