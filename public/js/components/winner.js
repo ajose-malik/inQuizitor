@@ -6,7 +6,9 @@ const Winner = props => {
 				alt=""
 				className="p-0 btn-width"
 			/>
-			<h1 className="winner ylw-text-color mt-5 p-0">CONGRATULATIONS!</h1>
+			<h1 className="winner ylw-text-color mt-5 text-winner">
+				CONGRATULATIONS!
+			</h1>
 
 			<button
 				onClick={props.playAgain}

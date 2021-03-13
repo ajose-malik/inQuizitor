@@ -96,6 +96,11 @@ body {
 	padding: 0 10px;
 }
 
+.text-winner {
+	font-size: 30px;
+	padding: 0;
+}
+
 @media (max-width: 800px) {
 	.btn-width {
 		width: 60%;
@@ -110,6 +115,10 @@ body {
 
 	.btn-width {
 		width: 100%;
+	}
+
+	.text-winner {
+		font-size: 15px;
 	}
 }
 
