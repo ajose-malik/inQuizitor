@@ -88,26 +88,29 @@ class Game extends React.Component {
 			actions: this.state.actions + 1
 		})
 
-		axios.get("/quiz").then(res => {
-			const randQuiz = Math.floor(Math.random() * res.data.length)
-			const { quizBox } = this.state
-			if (quizBox.length) {
-				if (quizBox.indexOf(res.data[randQuiz]._id) === -1) {
+		try {
+			axios.get("/quiz").then(res => {
+				const randQuiz = Math.floor(Math.random() * res.data.length)
+				const { quizBox } = this.state
+				if (quizBox.length) {
+					if (quizBox.indexOf(res.data[randQuiz]._id) === -1) {
+						this.setState({
+							quiz: res.data[randQuiz]
+						})
+						quizBox.push(res.data[randQuiz]._id)
+					} else {
+						this.findQuestion(event)
+					}
+				} else {
 					this.setState({
 						quiz: res.data[randQuiz]
 					})
 					quizBox.push(res.data[randQuiz]._id)
-					this.randomSelect()
-				} else {
-					this.findQuestion(event)
 				}
-			} else {
-				this.setState({
-					quiz: res.data[randQuiz]
-				})
-				quizBox.push(res.data[randQuiz]._id)
-			}
-		})
+			})
+		} catch (e) {
+			return null
+		}
 		this.hideAnswer()
 	}
 
@@ -155,6 +158,10 @@ class Game extends React.Component {
 
 	render = () => {
 		const { page, addPoint, gameStart, quiz, seconds } = this.state
+		const rand = () => {
+			return Math.random()
+		}
+
 		if (page === "game") {
 			return (
 				<div className="justify-content-center d-flex row margin-top">
@@ -209,7 +216,7 @@ class Game extends React.Component {
 						{addPoint < 0 ? AddPoint("#e91e63", "-1") : null}
 					</div>
 
-					<p className="text-center ylw-text-color">
+					<div className="text-center ylw-text-color">
 						{this.state.quiz.question ? (
 							<h3 className="line-height my-2 question">
 								{this.state.quiz.question}
@@ -219,13 +226,12 @@ class Game extends React.Component {
 								Are you ready to be inQUIZitive?
 							</h3>
 						)}
-					</p>
+					</div>
 					<div className="text-center">
-						{this.state.quiz.selection.map((el, id) => (
-							<div>
+						{this.state.quiz.selection.map(el => (
+							<div key={rand()}>
 								<button
 									className="bg-btn-color btn-width ylw-text-color mt-3 p-2 px-5 fs-5"
-									key={id}
 									onClick={this.handleCheckAnswer}>
 									{el}
 								</button>
