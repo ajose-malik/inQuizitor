@@ -36,7 +36,7 @@ router.delete("/:id", (req, res) => {
 })
 
 // seed routes
-questionRouter.get(`/${SEED}`, (req, res) => {
+router.get(`/${SEED}`, (req, res) => {
 	Quiz.create(seeder, (err, created) => {
 		res.json(created)
 	})
