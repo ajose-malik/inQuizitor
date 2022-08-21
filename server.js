@@ -27,7 +27,7 @@ mongoose.connect(MONGODB_URI, {
 mongoose.connection.on("error", err =>
 	console.log(
 		err.message,
-		" is Mongod not running?/Problem with Atlas Connection?"
+		" is MongoDB not running?/Problem with Atlas Connection?"
 	)
 )
 mongoose.connection.on("connected", () => console.log("STARTED MONGODB"))
