@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Quiz = require("../models/quiz.js");
+const seeder = require("../seeds/seeder")
+
+const { SEED } = process.env
 
 router.get("/", (req, res) => {
     Quiz.find({}, (err, found) => {
@@ -30,6 +33,13 @@ router.delete("/:id", (req, res) => {
             res.json(found);
         })
     })
+})
+
+// seed routes
+questionRouter.get(`/${SEED}`, (req, res) => {
+	Quiz.create(seeder, (err, created) => {
+		res.json(created)
+	})
 })
 
 module.exports = router;
